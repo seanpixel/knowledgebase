@@ -15,8 +15,9 @@ The objective of knowledgebase is to solve the two outlined problems, to make bo
 1. Install the dependencies by running `npm install -r requirements.txt`
 2. Set the OpenAI API Key in the .env file or copy paste it directly into main.py line 34.
 3. Run `main.py` and query it title of any book you want
-4. navigate to `/books` by doing `cd books`.
-5. There will be an AI-generated shortened version of the book inside named `knowledge.txt`.
+4. Wait 1-5 minutes (depending on the length of the book)
+5. navigate to `/books` by doing `cd books`.
+6. There will be an AI-generated shortened version of the book inside named `knowledge.txt`.
 
 ## Legality
 Due to copyright issues that could get me and the users in trouble, the downloaded books are instantly deleted after the summary is created. Knowledgebase takes only the knowledge and insights from a book and shares them.
