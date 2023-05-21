@@ -24,4 +24,5 @@ Due to copyright issues that could get me and the users in trouble, the books ar
 
 ## Next Steps
 I'm currently working on improving the quality of the summaries by using my own implementation of summarization and QA instead of using langchain. 
+
 Updates and improvements will be made soon but meanwhile, here is a functional version of Knowledgebase.
