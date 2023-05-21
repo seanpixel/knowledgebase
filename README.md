@@ -18,3 +18,5 @@ The objective of knowledgebase is to solve the two outlined problems, to make bo
 4. navigate to `/books` by doing `cd books`.
 5. There will be an AI-generated shortened version of the book inside named `knowledge.txt`.
 
+## Legality
+Due to copyright issues that could get me and the users in trouble, the downloaded books are instantly deleted after the summary is created.
