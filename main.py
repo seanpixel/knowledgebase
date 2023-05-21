@@ -31,7 +31,7 @@ def generate(prompt):
 
     return completion.choices[0].message["content"]
 
-OPENAI_API_KEY = "" or os.environ["OPENAI_API_KEY"] # Set key in .env or put it between the quotation marks
+OPENAI_API_KEY = "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" or os.environ["OPENAI_API_KEY"] # Set key in .env or put it between the quotation marks
 
 openai.api_key = OPENAI_API_KEY
 
@@ -136,9 +136,7 @@ while True:
         # Extract text from book
         book_text += extract_text_from_epub(book_path)
 
-        with open(f'books/{book_title}/full_text.txt', 'w') as file:
-            file.write(book_text)
-
+        os.remove(book_path)
 
     elif(isPdf):
         item_to_download = pdf_results[0]
@@ -156,8 +154,7 @@ while True:
         # Extract text from book
         book_text += extract_text_from_pdf(book_path)
 
-        with open(f'books/{book_title}/full_text.txt', 'w') as file:
-            file.write(book_text)
+        os.remove(book_path)
     else:
         print("No book found")
         continue
@@ -175,10 +172,8 @@ while True:
     prompt = f"The following is a summary and key points from a book. Given the information, recreate a short version of the book\n\nSummary: {summary}\n\nMain Points: {main_points}\n\nShortened version of the book: "
     short_version = generate(prompt)
 
-    with open(f'books/{book_title}/shortened.txt', 'a') as file:
+    with open(f'books/{book_title}/knowledge.txt', 'a') as file:
         file.write(short_version)
     
 
     
-
-
