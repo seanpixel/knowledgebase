@@ -1,7 +1,15 @@
 # Knowledgebase
 
-## Goal
-The purpose of knowledgebase is to remove the barrier between online users and books. It can access almost any book in existence and produces a shortened version containing the main points that can be read in 1-2 minutes.
+## Motivation
+I realized that while there are many great online resources out on the internet, the chances of quality information being present in a book is far higher than it being present in a tweet or an article. The two biggest problems with books that I found were that:
+
+a) they often cost money 
+b) some are dense and take a while to read to extract and consume the main ideas behind the book.
+
+So, I created knowledgebase so that I (and others) can access any book for free using online libraries and read the core information from those books. 
+
+## Objective
+The objective of knowledgebase is to remove the barrier between online users and books. It can access almost any book in existence and produces a shortened version containing the main points that can be read in 1-2 minutes.
 
 ## How to Use
 1. Install the dependencies by running `npm install -r requirements.txt`
