@@ -31,7 +31,7 @@ def generate(prompt):
 
     return completion.choices[0].message["content"]
 
-OPENAI_API_KEY = "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" or os.environ["OPENAI_API_KEY"] # Set key in .env or put it between the quotation marks
+OPENAI_API_KEY = "" or os.environ["OPENAI_API_KEY"] # Set key in .env or put it between the quotation marks
 
 openai.api_key = OPENAI_API_KEY
 
@@ -97,6 +97,8 @@ def answerQuestion(text, question):
     answer = qa_chain.run(input_documents=docs, question=query)
     return answer
 
+# Make Books folder
+os.makedirs("books")
 
 while True:
     # User Interaction
