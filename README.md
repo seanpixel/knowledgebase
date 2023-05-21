@@ -3,7 +3,7 @@
 ## Motivation
 I realized that while there are many great online resources out on the internet, the chances of quality information being present in a book is far higher than it being present in a tweet or an article. The two biggest problems with books that I found were that:
 
-a) they often cost money 
+a) they often cost money
 b) some are dense and take a while to read to extract and consume the main ideas behind the book.
 
 So, I created knowledgebase so that I (and others) can access any book for free using online libraries and read the core information from those books. 
