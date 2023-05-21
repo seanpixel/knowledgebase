@@ -19,4 +19,4 @@ The objective of knowledgebase is to solve the two outlined problems, to make bo
 5. There will be an AI-generated shortened version of the book inside named `knowledge.txt`.
 
 ## Legality
-Due to copyright issues that could get me and the users in trouble, the downloaded books are instantly deleted after the summary is created.
+Due to copyright issues that could get me and the users in trouble, the downloaded books are instantly deleted after the summary is created. Knowledgebase takes only the knowledge and insights from a book and shares them.
