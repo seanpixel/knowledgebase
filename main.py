@@ -31,7 +31,9 @@ def generate(prompt):
 
     return completion.choices[0].message["content"]
 
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"] or "" # Set key in .env or put it between the quotation marks
+OPENAI_API_KEY = "" or os.environ["OPENAI_API_KEY"] # Set key in .env or put it between the quotation marks
+
+openai.api_key = OPENAI_API_KEY
 
 # Getting Text from book
 def extract_text_from_epub(epub_path):
@@ -70,7 +72,6 @@ def makeDocs(text):
     text_splitter = TokenTextSplitter(chunk_size=3000)
     texts = text_splitter.split_text(text)
     docs = [Document(page_content=t) for t in texts]
-    print(len(docs))
     return docs
 
 # Long Text --> str: Summary of Long Text
@@ -115,16 +116,18 @@ while True:
 
     if(len(epub_results) > 0):
         isEpub = True
+
+    os.makedirs(f"books/{book_title}")
     
     if(isEpub):
         item_to_download = epub_results[0]
         download_links = s.resolve_download_links(item_to_download)
-        print("is Epub")
-        print(download_links)
+        # print("is Epub")
+        # print(download_links)
         response = requests.get(download_links['GET'])
 
         # Save the content to a file
-        book_path = f'books/{book_title}.epub'
+        book_path = f'books/{book_title}/book.epub'
 
 
         with open(book_path, 'wb') as f:
@@ -133,19 +136,19 @@ while True:
         # Extract text from book
         book_text += extract_text_from_epub(book_path)
 
-        with open(f'books/{book_title}.txt', 'w') as file:
+        with open(f'books/{book_title}/full_text.txt', 'w') as file:
             file.write(book_text)
 
 
     elif(isPdf):
         item_to_download = pdf_results[0]
         download_links = s.resolve_download_links(item_to_download)
-        print("is Pdf")
-        print(download_links)
+        # print("is Pdf")
+        # print(download_links)
         response = requests.get(download_links['GET'])
 
         # Save the content to a file
-        book_path = f'books/{book_title}.pdf'
+        book_path = f'books/{book_title}/book.pdf'
 
         with open(book_path, 'wb') as f:
             f.write(response.content)
@@ -153,28 +156,28 @@ while True:
         # Extract text from book
         book_text += extract_text_from_pdf(book_path)
 
-        with open(f'books/{book_title}.txt', 'w') as file:
+        with open(f'books/{book_title}/full_text.txt', 'w') as file:
             file.write(book_text)
     else:
         print("No book found")
         continue
 
     summary = summarize(book_text)
-    print(summary)
-    main_points = answerQuestion(book_text, "What are the main points of this book?")
-    print(main_points)
+    #print(summary)
+    main_points = answerQuestion(book_text, "What are some main points in this text?")
+    #print(main_points)
 
-    with open(f'books/{book_title} summary.txt', 'a') as file:
+    
+    # Writing Summary & Shortened Versions
+    with open(f'books/{book_title}/summary.txt', 'a') as file:
         file.write(summary + "\n\n" + main_points)
-
 
     prompt = f"The following is a summary and key points from a book. Given the information, recreate a short version of the book\n\nSummary: {summary}\n\nMain Points: {main_points}\n\nShortened version of the book: "
     short_version = generate(prompt)
 
-    with open(f'books/{book_title} small.txt', 'a') as file:
+    with open(f'books/{book_title}/shortened.txt', 'a') as file:
         file.write(short_version)
     
-    os.remove(f'books/{book_title}.txt')
 
     
 
